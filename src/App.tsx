@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { AuthPage } from './pages/AuthPage';
+import { AuthPage } from './pages/AuthPage/AuthPage';
+
 
 function App() {
   return (

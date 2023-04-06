@@ -1,0 +1,31 @@
+.form {
+  width: 400px;
+  height: 400px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 55px;
+  background: white;
+}
+
+.button {
+  width: 100%;
+  margin-top: 20px;
+  background: #a7bcff !important;
+  border: none !important;
+}
+
+.textAlignCenter {
+  text-align: center;
+}
+
+.registerText {
+  margin-top: 10px;
+}
+
+.registerBtn {
+  cursor: pointer;
+  color: orange;
+  &:hover {
+    text-decoration: underline;
+  }
+}
