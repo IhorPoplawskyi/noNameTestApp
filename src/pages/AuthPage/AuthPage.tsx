@@ -5,7 +5,7 @@ import { Login } from '../../components/Login/Login'
 import { Register } from '../../components/Register/Register'
 
 export const AuthPage: FC = (): JSX.Element => {
-    const [toogle, setToogle] = useState<boolean>(true)
+    const [toogle, setToogle] = useState<boolean>(false)
 
     return (
         <div className={style.wrapper}>

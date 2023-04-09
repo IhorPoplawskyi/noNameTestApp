@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
 import style from './Login.module.scss'
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from 'firebase/auth'
 import { auth } from '../../firebase'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,6 +14,9 @@ export const Login: FC<props> = ({ setToogle }): JSX.Element => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [pass, setPass] = useState<string>('');
+
+  const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
 
   const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
@@ -32,6 +35,18 @@ export const Login: FC<props> = ({ setToogle }): JSX.Element => {
     }
   }
 
+  const facebook = async () => {
+    try {
+      signInWithPopup(auth, facebookProvider);
+      navigate("/home")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+
+
   return (
     <Form className={style.form}>
       <h4 className={style.textAlignCenter}>Trips&Tips</h4>
@@ -39,6 +54,10 @@ export const Login: FC<props> = ({ setToogle }): JSX.Element => {
         <Form.Label>Email address</Form.Label>
         <Form.Control value={email} onChange={onChangeEmail} type="email" placeholder="Enter email" />
       </Form.Group>
+
+     <div onClick={() => signInWithPopup(auth, googleProvider)}>Sign in with Google</div>
+
+     <div onClick={facebook}>Sign in with Facebook</div>
 
       <Form.Group controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
